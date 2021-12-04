@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Solar System Simulation</title>
+</head>
+
+<body>
+    <h1 class = "menu">
+        <a href="index.html">simulation</a><a href="about.html">about</a>
+        <link rel="stylesheet" href="about.css">
+    </h1>
+
+    <div id="initialize">
+        <form id="add_sun">
+            <h1>Welcome to the miniature<br>solar system simulation.<br> 
+                        Please enter the<br>mass of your sun.</h1><br>
+            <div>
+                <label for='s_mass_in'>Mass (in kg):</label><br>
+                <input type='number' id='s_mass_in' name='s_mass_in' min='1'><br>
+            </div>
+            <div>
+                <button type="button" onclick="startGame()">Add</button>
+            </div>
+        </form>
+        <link rel="stylesheet" href="firstpage.css">
+    </div>
+
+     <!-- Display rest of code once sun form has been submitted -->
+        <!-- New planet form -->
+        <div id="new_planet" style="display: none">
+            <form id="add_planet">
+                <h1 id="add">Add planet:</h1>
+                <div id="massinput">
+                    <label for='p_mass_in'>Mass (in kg):</label><br>
+                    <input type='number' id='p_mass_in' name='p_mass_in' min='1'><br>
+                </div>
+                <div id= "distinput">
+                    <label for='p_dist_in'>Distance from sun (in meters):</label><br>
+                    <input type='number' id ='p_dist_in' name='p_dist_in' min='0'>
+                </div>
+                <div id= "name">
+                    <label for='name_in'>Name:</label><br>
+                    <input type='text' id ='name_in' name='name_in' min='0'>
+                </div>
+                <div>
+                    <button type="button" onclick="makePlanet()">Add</button>
+                </div>
+                <script src="new_planet.js"></script>
+                <link rel="stylesheet" href="new_planet.css">
+            </form>
+        </div>
+        <!-- Solar system simulation -->
+        <div id="simulation" style="display: none">
+            <button id="stopstart" type="button" onclick="changeMode()">Run simulation</button>
+            <canvas id="gameCanvas" width="650" height="650"></canvas>
+            <script src="game.js"></script>
+            <table id="data">
+                <tr>
+                    <div id="titles">
+                    <th>Label</th>
+                    <th>Name</th>
+                    <th>Mass</th>
+                    <th>Distance</th>
+                    <th>Period</th>
+                    </div>
+                </tr>
+            </table>
+            <link rel="stylesheet" href="simulation.css">
+        </div>
+
+    <!--- Initializes simulation -->
+    <link rel="stylesheet" href="init.css">
+    <script src="init.js"></script>
+</body>
+</html>

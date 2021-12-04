@@ -1,0 +1,37 @@
+#gameCanvas {
+    position: absolute;
+    top: 80px;
+    right: 150px;
+    background: #10111c;
+    padding: 0;
+    margin-bottom: 1rem;
+    outline: #afa3cc 2px solid;
+} 
+
+#stopstart {
+    position: absolute;
+    background-color:#afa3cc;
+    width: 100px;
+    height: 40px;
+    top: 385px;
+    left: 250px;
+}
+
+#data {
+    position: absolute;
+    width: 450px;
+    top: 450px;
+    left: 45px;
+    padding: 10px;
+    outline: #afa3cc 2px solid;
+    background-color: #1e1f2e;
+}
+
+tr {
+    font-size: 12px;
+}
+
+th {
+    color: #9092fc;
+    font-size: 17px;
+}

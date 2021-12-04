@@ -1,0 +1,12 @@
+TODO:
+- fix header issues
+- fix issue where entering an incorrect sun mass will still let you enter the simulation
+- make a reusable function for drawing planets
+- allow user to change “sun” by adding another planet with more mass
+- add eccentricity and accurate timing in different areas of orbit 
+- submit simulation to site permanently so others can see it
+- allow user to change colors of planets
+- add gradient to background 
+- make planets different sizes
+- alert user if they make planets that will bump into each other
+- replace ‘magic numbers‘ with variables

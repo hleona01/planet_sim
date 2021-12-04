@@ -1,0 +1,26 @@
+#info {
+    font-family: testFont;
+    font-size: 20px;
+}
+
+.menu {
+    background-color: #2c2741;
+    color: #c2b3e4;
+    font-size: 15px;
+    font-family: Verdana;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.eqn {
+    background-color: #ded0ff;
+}
+
+p {
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    outline: #afa3cc 2px solid;
+  }
+
