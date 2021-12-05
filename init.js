@@ -1,6 +1,6 @@
-/* * * * * * * * * * */
-/*    VARIABLES      */
-/* * * * * * * * * * */
+/***************************************
+           ====VARIABLES====
+***************************************/
 
 // Radius of the sun
 let sun_radius = 50;
@@ -13,15 +13,16 @@ const planets = [];
 // Sun
 const sun = new Object();
 
+/* ===FUNCTIONS=== */
 function startGame() {
     // Change visibilities
     var init = document.getElementById("initialize");
-    var make_planet = document.getElementById("new_planet");
+    var controls = document.getElementById("control_panel");
     var sim = document.getElementById("simulation");
 
     init.style.display = 'none';
-    make_planet.style.display = 'inline';
-    sim.style.display = 'inline';
+    controls.style.display = 'inline-block';
+    sim.style.display = 'inline-block';
     initSun();
 }
 
@@ -54,7 +55,7 @@ function drawSun() {
     ctx.fillStyle = '#ffb801';
     ctx.fill();
     // Display sun's mass
-    ctx.font = '15px testFont';
+    ctx.font = '15px mainFont';
     ctx.fillStyle = '#10111c';
     ctx.textAlign = "center";
     ctx.fillText(sun.mass + " kg", mid, mid, 100);

@@ -1,6 +1,6 @@
-/* * * * * * * * * * */
-/*    VARIABLES      */
-/* * * * * * * * * * */
+/***************************************
+           ====VARIABLES====
+***************************************/
 
 // Radius of all planets (in pixels)
 var gen_planet_radius = 15;
@@ -14,6 +14,7 @@ var gen_planet_radius = 15;
     * curr_angle: the planet's current revolution angle
 */
 
+/* ===FUNCTIONS=== */
 function makePlanet() {
     if (!checkValid())
     {
@@ -57,6 +58,10 @@ function getPeriod(mass, dist) {
 function checkValid() {
     let input_mass = document.getElementById('p_mass_in').value;
     let input_dist = document.getElementById('p_dist_in').value;
+    if (input_mass === ''|| input_dist === '') {
+        alert("Please provide a mass and distance.");
+        return false;
+    }
     if (parseFloat(input_mass) <= 0 || parseFloat(input_dist) <= 0) {
         alert("Mass and distance should be greater than 0.");
         return false;
@@ -104,7 +109,7 @@ function drawPlanet(planet, x, y, rad) {
     ctx.fill();
 
     // Draw label
-    ctx.font = '10px testFont';
+    ctx.font = '10px mainFont';
     ctx.fillStyle = '#10111c';
     ctx.textAlign = "center";
     ctx.fillText(planet.label, x, y, 50);

@@ -1,6 +1,6 @@
-/* * * * * * * * * * */
-/*    VARIABLES      */
-/* * * * * * * * * * */
+/***************************************
+           ====VARIABLES====
+***************************************/
 
 // Canvas
 var c = document.getElementById('gameCanvas');
@@ -9,6 +9,7 @@ var ctx = c.getContext("2d");
 // Keeps track of whether simulation is operating
 var running = false;
 
+/* ===FUNCTIONS=== */
 function changeMode() {
     if (running) {
         document.getElementById('stopstart').innerHTML = "Run simulation";

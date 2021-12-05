@@ -1,37 +1,132 @@
-#gameCanvas {
-    position: absolute;
-    top: 80px;
-    right: 150px;
-    background: #10111c;
-    padding: 0;
-    margin-bottom: 1rem;
-    outline: #afa3cc 2px solid;
-} 
+/***************************************
+ ====Global settings for simulation====
+***************************************/
 
-#stopstart {
-    position: absolute;
-    background-color:#afa3cc;
-    width: 100px;
-    height: 40px;
-    top: 385px;
-    left: 250px;
+/* Font used throughout the site */
+@font-face {
+  font-family: mainFont;
+  src: url(Retro-Gaming.ttf);
 }
 
+/* Menu on top of page */
+.menu {
+  margin-right: 4%;
+  text-align: center;
+  font-size: 15px;
+  font-family: Verdana;
+}
+
+/* Menu links */
+.menu a {
+  text-decoration:none;
+  color: #c2b3e4;
+  display: inline;
+}
+
+/* Menu text */
+.menu li {
+  display: inline;
+}
+
+/* Add line between menu items */
+.menu li:not(:first-child):before {
+  content: " | ";
+  align-content: center;
+}
+
+/* Default settings for site */
+body {
+  color:  #ded0ff; 
+  background:url('background_pic.png');
+  font-family: mainFont;
+  text-align: center;
+}
+
+/* Number input fields */
+input, select, textarea {
+  width: 125px;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+  font-size: 75%;
+  padding: 0;
+}
+
+/* Add Planet form, stop/start simulation button, table of planets */
+#control_panel {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;
+}
+
+/* Add Planet form and stop/start button*/
+#add_and_run {
+  margin: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+  padding: 20px;
+  padding-top: 5px;
+  width: 325px;
+  outline: #afa3cc 2px solid;
+  background-color: #1e1f2e;
+}
+
+/* "Add Planet" text on top of form */
+#add {
+    color: #9092fc;
+}
+
+/* Canvas showing planets */
+#gameCanvas {
+  background: #10111c;
+  display: inline-block;
+  outline: #afa3cc 2px solid;
+} 
+
+/* Button that starts and stops simulation */
+#stopstart {
+  color: #10111c;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 113px; 
+  position:relative;
+  align-items: center;
+  justify-content: center;
+  background-color:#afa3cc;
+  width: 120px;
+  height: 50px;
+}
+
+/* Table of planet data */
 #data {
-    position: absolute;
-    width: 450px;
-    top: 450px;
-    left: 45px;
-    padding: 10px;
-    outline: #afa3cc 2px solid;
-    background-color: #1e1f2e;
+  margin: 20px;
+  width: 450px;
+  padding: 10px;
+  outline: #afa3cc 2px solid;
+  background-color: #1e1f2e;
 }
 
 tr {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 th {
-    color: #9092fc;
-    font-size: 17px;
+  color: #9092fc;
+  font-size: 17px;
+}
+
+/* Add Sun form */
+#add_sun {
+  background-color: #10111c;
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  color: #ded0ff;
+  outline: #afa3cc 2px solid;
+  padding: 20px;
 }
