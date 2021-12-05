@@ -17,6 +17,11 @@
     box-sizing: border-box;
   }
   
+  .menu {
+    margin: 20px;
+    background-color: #262331;
+}
+
   button {
     font-family: inherit;
     font-size: 75%;

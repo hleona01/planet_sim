@@ -1,7 +1,16 @@
-var sun_form = document.getElementById("add_sun");
-var sun_radius = 50;
+/* * * * * * * * * * */
+/*    VARIABLES      */
+/* * * * * * * * * * */
+
+// Radius of the sun
+let sun_radius = 50;
+// Middle of the canvas (in pixels)
+let mid = 325;
+// Maximum canvas dimensions (in pixels)
+let max = 650;
+// Array to contain planets
 const planets = [];
-// Create sun 
+// Sun
 const sun = new Object();
 
 function startGame() {
@@ -16,39 +25,37 @@ function startGame() {
     initSun();
 }
 
+// Set up simulation if provided valid input
 function initSun() {
     if (!checkValidSun()) {
-        return;
+        window.location.reload(true);
+        return false;
     }
     sun.mass = document.getElementById('s_mass_in').value;
     drawSun();
 }
 
+// Make sure input data is valid
 function checkValidSun() {
     let input_mass = document.getElementById('s_mass_in').value;
     if (input_mass <= 0) {
         alert("Mass should be greater than 0.");
         return false;
     }
-    if (input_mass > 10000){
-        alert("Please enter a mass smaller than 10,000 kg.");
-        return false;
-    }
     return true;
 }
-
 
 function drawSun() {
     // Display sun
     var c = document.getElementById('gameCanvas');
     var ctx = c.getContext("2d");
     ctx.beginPath();
-    ctx.arc(325, 325, sun_radius, 0, 2 * Math.PI, false);
+    ctx.arc(mid, mid, sun_radius, 0, 2 * Math.PI, false);
     ctx.fillStyle = '#ffb801';
     ctx.fill();
     // Display sun's mass
     ctx.font = '15px testFont';
     ctx.fillStyle = '#10111c';
     ctx.textAlign = "center";
-    ctx.fillText(sun.mass + " kg", 325, 325, 100);
+    ctx.fillText(sun.mass + " kg", mid, mid, 100);
 }

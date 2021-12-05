@@ -4,13 +4,14 @@
 }
 
 .option {
-    background-color: #2c2741;
+    background-color: #262331;
     color: #c2b3e4;
     font-size: 15px;
     font-family: Verdana;
-    padding: 7px;
+    padding: 5px;
     text-decoration: none;
 }
+
 
 .eqn {
     background-color: #ded0ff;
@@ -22,5 +23,9 @@ p {
     margin-left: 200px;
     margin-right: 200px;
     outline: #afa3cc 2px solid;
-  }
+}
+
+span {
+    color:#f878be;
+}
 

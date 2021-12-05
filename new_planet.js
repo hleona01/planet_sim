@@ -1,47 +1,59 @@
+/* * * * * * * * * * */
+/*    VARIABLES      */
+/* * * * * * * * * * */
+
+// Radius of all planets (in pixels)
 var gen_planet_radius = 15;
 
 /* Planet fields:
-     mass
-     dist
-     name
-     period (unit is days)
-     pixel_radius
-     color
-     curr_angle
-     label
+    * label: labels planet in simulation according to order added
+    * name: name for planet inputted by user
+    * period: number of days it takes the planet to complete a revolution
+    * pixel_radius: the planet's distance from the sun in pixels
+    * color: a randomly selected color
+    * curr_angle: the planet's current revolution angle
 */
 
 function makePlanet() {
-    // Make sure input is valid
     if (!checkValid())
     {
         return;
     }
     const planet = new Object();
-    planet.mass = document.getElementById('p_mass_in').value;
-    planet.dist = document.getElementById('p_dist_in').value;
+    let mass = document.getElementById('p_mass_in').value;
+    let dist = document.getElementById('p_dist_in').value;
     planet.name = document.getElementById('name_in').value
-    // 1 m represented by 20 pixels for visibility; each additional m = additional 20 pixels dist
-    // Radius of sun + 20 + (distance * 20 /2)
-    planet.pixel_radius = sun_radius + 20 + planet.dist * 35;
+    // 0 meters represented by 20 pixels for visibility
+    // Each additional meter is an additional 20 pixels
+    planet.pixel_radius = sun_radius + 20 + dist * 35;
+    // Calculate period 
+    planet.period = getPeriod(mass, dist);
+    // Initialize field to be used later
+    planet.curr_angle = 0;
+    planet.label = planets.length + 1;
+    // Get random light color
+    planet.color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+    planets.push(planet);
+    // Display planet in table and simulation
+    addToTable();
+    drawOrbit(planet, 325, 325, planet.pixel_radius);
+    drawPlanet(planet, 325 + planet.pixel_radius, 325, gen_planet_radius);
+    return;
+}
+
+function getPeriod(mass, dist) {
     // Equation for period (in seconds): T² = (4• π^2 • R³)/(G • M)
     let fourpisq = 4 * Math.PI**2;
     // G = gravitational constant = 6.674e-11
     let G = 6.674e-11;
-    let T_squared = (fourpisq * planet.dist**3)/(G * (parseFloat(planet.mass) + parseFloat(sun.mass)));
+    let T_squared = (fourpisq * dist**3)/(G * (parseFloat(mass) + 
+                     parseFloat(sun.mass)));
     let T = Math.sqrt(T_squared);
     // Turn unit of period into days
-    planet.period = T/86400;
-    // Initialize field to be used later
-    planet.curr_angle = 0;
-    planet.label = planets.length + 1;
-    planets.push(planet);
-    // Display planet in table and simulation
-    addToTable();
-    drawPlanet(planets);
-    return;
+    return T/86400;
 }
 
+// Only continue if input is valid
 function checkValid() {
     let input_mass = document.getElementById('p_mass_in').value;
     let input_dist = document.getElementById('p_dist_in').value;
@@ -49,21 +61,19 @@ function checkValid() {
         alert("Mass and distance should be greater than 0.");
         return false;
     }
-    if (input_mass > 10000){
-        alert("Please enter a mass smaller than 10,000 kg.");
-        return false;
-    }
     if (parseFloat(input_mass) >= parseFloat(sun.mass)) {
         alert("Please enter a mass smaller than that of the sun.");
         return false;   
     }
     if (parseFloat(input_dist) > 6.5) {
-        alert("Please enter a distance 6.5 meters or smaller so your planet can be visible.");
+        alert("Please enter a distance 6.5 meters or smaller" +
+              "so your planet can be visible.");
         return false;
     }
     return true;
 }
 
+// Add new planet data to table
 function addToTable() {
     var index = planets.length - 1;
     var table = document.getElementById('data');
@@ -77,38 +87,39 @@ function addToTable() {
     let rounded_per = planets[index].period.toFixed(3)
     label.innerHTML = planets[index].label;
     name.innerHTML = planets[index].name;
-    mass.innerHTML = planets[index].mass + ' kg';
-    dist.innerHTML = planets[index].dist + ' m';
+    mass.innerHTML = document.getElementById('p_mass_in').value + ' kg';
+    dist.innerHTML = document.getElementById('p_dist_in').value + ' m';
     per.innerHTML = rounded_per + ' days';
 }
 
-function drawPlanet(planets) {
-    var curr_planet = planets[planets.length - 1];
+// Add planet to canvas
+function drawPlanet(planet, x, y, rad) {
     var c = document.getElementById('gameCanvas');
     var ctx = c.getContext("2d");
-    let radius = curr_planet.pixel_radius;
-
-    // Get random light color
-    const planet_color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
-    curr_planet.color = planet_color;
-
-    // Show orbit
-    ctx.beginPath();
-    ctx.arc((650/2), (650/2), radius, 0, 2 * Math.PI, false);
-    ctx.strokeStyle = planet_color;
-    ctx.stroke();
 
     // Show planet
     ctx.beginPath();
-    ctx.arc(650/2 + radius, 650/2, gen_planet_radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = planet_color;
+    ctx.arc(x, y, rad, 0, 2 * Math.PI, false);
+    ctx.fillStyle = planet.color;
     ctx.fill();
 
-    // Show label
+    // Draw label
     ctx.font = '10px testFont';
     ctx.fillStyle = '#10111c';
     ctx.textAlign = "center";
-    ctx.fillText(curr_planet.label, 650/2 + radius, 650/2, 50);
+    ctx.fillText(planet.label, x, y, 50);
+}
+
+// Add orbit to canvas
+function drawOrbit(planet, x, y, rad) {
+    var c = document.getElementById('gameCanvas');
+    var ctx = c.getContext("2d");
+
+    // Draw orbit
+    ctx.beginPath();
+    ctx.arc(x, y, rad, 0, 2 * Math.PI, false);
+    ctx.strokeStyle = planet.color;
+    ctx.stroke();
 }
 
 
