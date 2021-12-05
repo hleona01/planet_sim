@@ -59,14 +59,15 @@ button {
 
 /* Add Planet form, stop/start simulation button, table of planets */
 #control_panel {
+  margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
-  margin-right: 15px;
 }
 
 /* Add Planet form and stop/start button*/
 #add_and_run {
-  margin: 20px;
+  margin: 85px;
+  margin-top: 0;
   margin-bottom: 25px;
   text-align: left;
   padding: 20px;
@@ -78,7 +79,7 @@ button {
 
 /* "Add Planet" text on top of form */
 #add {
-    color: #9092fc;
+    color: #919cff;
 }
 
 /* Canvas showing planets */
@@ -97,14 +98,14 @@ button {
   position:relative;
   align-items: center;
   justify-content: center;
-  background-color:#afa3cc;
+  border: 3px solid #796c96;
+  background-color:#afa3cc; 
   width: 120px;
   height: 50px;
 }
 
 /* Table of planet data */
 #data {
-  margin: 20px;
   width: 450px;
   padding: 10px;
   outline: #afa3cc 2px solid;
@@ -116,7 +117,7 @@ tr {
 }
 
 th {
-  color: #9092fc;
+  color: #919cff;
   font-size: 17px;
 }
 

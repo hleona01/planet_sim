@@ -1,7 +1,8 @@
 TODO:
+- allow user to zoom in and out of simulation so they can add farther planets
 - allow user to change “sun” by adding another planet with more mass
 - add eccentricity and accurate timing in different areas of orbit 
-- allow user to simulation to site permanently so others can see it
+- allow user to submit simulation to site permanently so others can see it
 - allow user to change colors of planets
 - make planets different sizes
 - alert user if they make planets that will bump into each other
