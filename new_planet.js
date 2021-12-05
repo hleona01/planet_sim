@@ -25,7 +25,7 @@ function makePlanet() {
     let dist = document.getElementById('p_dist_in').value;
     planet.name = document.getElementById('name_in').value
     // 0 meters represented by 20 pixels for visibility
-    // Each additional meter is an additional 20 pixels
+    // Each additional meter is an additional 35 pixels
     planet.pixel_radius = sun_radius + 20 + dist * 35;
     // Calculate period 
     planet.period = getPeriod(mass, dist);
